@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <style>
+      td{
+        height: 30px;
+        line-height: 30px !important;
+        padding: 15px !important;
+      }
+
+    </style>
+    <table class="table table-hover">
+      <h1 class="text-center">学生管理系统</h1>
+      <tr class="info">
+        <th>name</th>
+        <th>ids</th>
+        <th>site</th>
+        <th>Email</th>
+        <th>sex</th>
+        <th>update</th>
+        <th>inset</th>
+        <th>delete</th>
+      </tr>
+      <% infos.forEach(function(stu){ %>
+      <tr>
+        <td><%= stu.name %></td>
+        <td><%= stu.ids %></td>
+        <td><%= stu.site %></td>
+        <td><%= stu.Email %></td>
+        <td><%= stu.sex %></td>
+        <form class="form-horizontal container" method="post" action="/update">
+        <td><button name="_id" value="<%= stu._id %>" style="background:#7edfd3;border:0">修改</button></td>
+        </form>
+        <td><button  style="background:pink;border:0"><a href="/inset" style="color:inherit">添加</a></button></td>
+        <form class="form-horizontal container" method="post" action="/remove">
+        <td><button name="_id" value="<%= stu._id %>" style="background:#dbe493;border:0">删除</button></td>
+        </form>
+      </tr>
+      <% }); %>
+    </table>
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
